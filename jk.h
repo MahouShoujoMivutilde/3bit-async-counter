@@ -5,7 +5,7 @@
 SC_MODULE(JK){
     sc_in<bool> J{"J"}, K{"K"};
     sc_in<bool> clk{"clk"};
-    sc_in<bool> reset{"reset"};
+    sc_in<bool> set{"SET"};
 
     sc_out<bool> Q{"Q"};
 
@@ -20,22 +20,22 @@ SC_MODULE(JK){
                 Q.write(true);
             } else if (J.read() == false && K.read() == true) {
                 Q.write(false);
-            }
+            } /* если L L -> Q = Q, ничего делать не надо */
         }
-        if (!reset.read()) {
+        if (!set.read()) {
             cout << "@" << sc_time_stamp() << " " << name();
-            cout << ": reset" << endl;
-            Q.write(false);
+            cout << ": SET" << endl;
+            Q.write(true);
         }
     }
 
     SC_CTOR(JK){
         SC_METHOD(inner_logic);
 
-        /* чувствителен к падениям clk и сбросу,
+        /* чувствителен к падениям clk и SET,
          * а также изменениям J и K */
         sensitive << clk.neg();
-        sensitive << reset.neg();
+        sensitive << set.neg();
         sensitive << J << K;
     }
 };

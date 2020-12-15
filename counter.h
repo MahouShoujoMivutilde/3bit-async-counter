@@ -27,9 +27,9 @@ SC_MODULE(Counter){
         jk3.K(JKs);
 
         /* -P */
-        jk1.reset(JKs);
-        jk2.reset(JKs);
-        jk3.reset(JKs);
+        jk1.set(JKs);
+        jk2.set(JKs);
+        jk3.set(JKs);
 
         /* соединение триггеров между собой */
         jk1.clk(clk);
