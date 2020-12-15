@@ -10,6 +10,9 @@ int sc_main(int argc, char* argv[]){
 
     /* задержка перед началом на 1 us позволяет начать VP1
      * в состоянии L (как на диаграмме) */
+    /* первое число - период, он действительно 1 - т.к. это период, а не лишь один подъем */
+    /* второе скважность - у нас равномерная */
+    /* третье - время начала */
     sc_clock Clock("Clock", 1, SC_US, 0.5, 1, SC_US, false);
 
     counter.clk(Clock);
@@ -21,8 +24,6 @@ int sc_main(int argc, char* argv[]){
     sc_trace(tf, counter.VP1, "VP1");
     sc_trace(tf, counter.VP2, "VP2");
     sc_trace(tf, counter.VP3, "VP3");
-    sc_trace(tf, counter.VP4, "VP4");
-    sc_trace(tf, counter.VP5, "VP5");
 
     sc_start();
 

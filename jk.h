@@ -14,7 +14,7 @@ SC_MODULE(JK){
             if (J.read() == true && K.read() == true) {
                 bool q = Q.read();
                 cout << "@" << sc_time_stamp() << " " << name();
-                cout << ": Q will be = " << !q << endl;
+                cout << ": Q next = " << !q << endl;
                 Q.write(!q);
             } else if (J.read() == true && K.read() == false) {
                 Q.write(true);

@@ -10,7 +10,7 @@ SC_MODULE(Testbench){
          * уже было задано внутри счетчика */
 
         /* тестируем переключения */
-        wait(30, SC_US);
+        wait(11, SC_US);
         sc_stop();
     }
     SC_CTOR(Testbench){
