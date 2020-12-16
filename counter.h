@@ -42,8 +42,6 @@ SC_MODULE(Counter){
         jk3.Q(VP3);
 
         /* начальное состояние */
-        VP2.write(true);
-        VP3.write(true);
         JKs.write(true);
     }
 };
